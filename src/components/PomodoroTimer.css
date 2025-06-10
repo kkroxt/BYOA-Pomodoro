@@ -25,13 +25,13 @@
 
 /* Dark mode styles for the timer container */
 .timer-container.work.dark {
-  background-color: #3a2a27;
+  background-color: #000000;
   box-shadow: 0 0 15px rgba(231, 76, 60, 0.2);
   border: 1px solid rgba(231, 76, 60, 0.3);
 }
 
 .timer-container.break.dark {
-  background-color: #1a3027;
+  background-color: #000000;
   box-shadow: 0 0 15px rgba(39, 174, 96, 0.2);
   border: 1px solid rgba(39, 174, 96, 0.3);
 }
