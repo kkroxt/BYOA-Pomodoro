@@ -1,3 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+  --arcade-primary: #ff00ff;
+  --arcade-secondary: #00ffff;
+  --arcade-bg: #000000;
+  --arcade-text: #ffffff;
+}
+
+body {
+  margin: 0;
+  background-color: var(--arcade-bg);
+  font-family: 'Press Start 2P', cursive;
+  color: var(--arcade-text);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app {
+  text-align: center;
+  padding: 2rem;
+  max-width: 800px;
+  width: 100%;
+}
+
+.arcade-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-shadow: 
+    0 0 5px var(--arcade-primary),
+    0 0 10px var(--arcade-primary),
+    0 0 20px var(--arcade-primary);
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 
+      0 0 5px var(--arcade-primary),
+      0 0 10px var(--arcade-primary),
+      0 0 20px var(--arcade-primary);
+  }
+  to {
+    text-shadow: 
+      0 0 10px var(--arcade-primary),
+      0 0 20px var(--arcade-primary),
+      0 0 30px var(--arcade-primary);
+  }
+}
+
+@media (max-width: 480px) {
+  .arcade-title {
+    font-size: 1.5rem;
+  }
+}
+
 .app {
   background-color: white;
   border-radius: 8px;

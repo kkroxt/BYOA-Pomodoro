@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './PomodoroTimer.css';
-import { useTheme } from '../context/ThemeContext';
 
 const PomodoroTimer = () => {
   const [minutes, setMinutes] = useState(25);
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
-  const [mode, setMode] = useState('work'); // 'work' or 'break'
-  const { darkMode } = useTheme();
+  const [mode, setMode] = useState('work');
 
-  // Update document title with timer
   useEffect(() => {
     const formattedTime = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
     const modeText = mode === 'work' ? 'Work' : 'Break';
@@ -31,14 +28,12 @@ const PomodoroTimer = () => {
           setMinutes(minutes - 1);
           setSeconds(59);
         } else {
-          // Timer completed
           clearInterval(interval);
           const newMode = mode === 'work' ? 'break' : 'work';
           setMode(newMode);
           setMinutes(newMode === 'work' ? 25 : 5);
           setSeconds(0);
           
-          // Play sound notification
           const audio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-alarm-digital-clock-beep-989.mp3');
           audio.play();
         }
@@ -74,26 +69,26 @@ const PomodoroTimer = () => {
   };
 
   return (
-    <div className={`pomodoro-timer ${darkMode ? 'dark' : 'light'}`}>
-      <div className={`timer-container ${mode} ${darkMode ? 'dark' : 'light'}`}>
-        <button className={`mode-toggle ${darkMode ? 'dark' : 'light'}`} onClick={switchMode}>
-          {mode === 'work' ? 'Break' : 'Work'}
+    <div className="pomodoro-timer arcade">
+      <div className={`timer-container ${mode}`}>
+        <button className="mode-toggle arcade-button" onClick={switchMode}>
+          {mode === 'work' ? 'BREAK' : 'WORK'}
         </button>
         <div className="timer">
           <div className="time">
             {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
           </div>
           <div className="mode-indicator">
-            {mode === 'work' ? 'Work Time' : 'Break Time'}
+            {mode === 'work' ? 'WORK TIME' : 'BREAK TIME'}
           </div>
         </div>
       </div>
       
       <div className="controls">
-        <button className={darkMode ? 'dark' : 'light'} onClick={toggleTimer}>
-          {isActive ? 'Pause' : 'Start'}
+        <button className="arcade-button" onClick={toggleTimer}>
+          {isActive ? 'PAUSE' : 'START'}
         </button>
-        <button className={darkMode ? 'dark' : 'light'} onClick={resetTimer}>Reset</button>
+        <button className="arcade-button" onClick={resetTimer}>RESET</button>
       </div>
     </div>
   );
